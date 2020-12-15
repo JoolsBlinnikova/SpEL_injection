@@ -43,7 +43,7 @@
             </label>
         </div>
         <div class="form-group" id="buttonDiv">
-            <button id="editAddr" name="editAddr" type="submit" class="btn btn-outline-dark btn-block" style="width: 13%;">Save
+            <button id="editAddr" name="editAddr" type="submit" class="btn btn-outline-dark btn-block" style="width: 20%;">Save
             </button>
         </div>
     </form>
