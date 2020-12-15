@@ -6,4 +6,5 @@
 
 ## Run app
 mvn package
+
 mvn spring-boot:run
