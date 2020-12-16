@@ -9,7 +9,9 @@ import org.springframework.expression.spel.support.SimpleEvaluationContext;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +32,13 @@ public class MainController {
     }
 
     @PostMapping(value = {"/notesList"})
-    public String processForm( @RequestParam("noteTitle") String noteTitle, @RequestParam("note") String note, Model model) {
+    public String processForm(@RequestParam("noteTitle") String noteTitle, @RequestParam("note") String note, Model model) {
         try {
             ExpressionParser expressionParser = new SpelExpressionParser();
             Expression expression = expressionParser.parseExpression(note);
             StandardEvaluationContext standardEvaluationContext = new StandardEvaluationContext();
+
+            //SimpleEvaluationContext has no access to Java classes and referring to other beans. Should use this context instead of StandardEvaluationContext
             EvaluationContext simpleEvaluationContext = SimpleEvaluationContext.forReadOnlyDataBinding().build();
 
             note = (String) expression.getValue(standardEvaluationContext);

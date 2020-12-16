@@ -5,4 +5,6 @@
  -  Tomcat 7
  
  
-## To run the application
+## How to run the application
+1) mvn package
+2) mvn spring-boot:run
